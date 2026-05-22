@@ -2,6 +2,28 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+- Configured tailwindcss
+-
+
+
+# Features
+- Login/SignUp
+    -SiginIn/ up form
+    - Browse to Broeswer
+- Browser(After Auth)
+    - Header
+    - Main Movie
+        -Trailer in background
+        - Title and description
+        - Movie suggestion
+            -movieList * N
+- Netflix GPT
+    - Search bar
+    - Movie Suggestion
+
+    
+
 ## Available Scripts
 
 In the project directory, you can run:
