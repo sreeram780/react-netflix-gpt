@@ -1,7 +1,12 @@
+import Header from "./Header"
+import MainContainer from "./MainContainer"
+import SecondaryContainer from "./SecondaryContainer"
 
 const Browse = () => {
     return <div>
-        Browse
+        <Header />
+        <MainContainer />
+        <SecondaryContainer />
     </div>
 }
 
