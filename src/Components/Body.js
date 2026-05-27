@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom"
 import Browse from "./Browse"
 import Login from "./Login"
 import { RouterProvider } from "react-router-dom"
+import { Provider } from "react-redux"
 
 
 const Body = () => {
@@ -20,7 +21,9 @@ const appRouter = createBrowserRouter([
 
 
     return (<div>
-        <RouterProvider router={appRouter} />
+        <Provider >
+            <RouterProvider router={appRouter} />
+        </Provider>
     </div>)
 }
 
