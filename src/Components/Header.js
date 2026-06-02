@@ -1,12 +1,45 @@
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { LOGO_URL } from "../utils/constant";
+import { removeUser } from "../utils/userSlice";
+import { auth } from "../utils/firebase";
+import { signOut } from "firebase/auth";
+
 const Header = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((store) => store.user);
+
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        dispatch(removeUser());
+        navigate("/");
+      })
+      .catch((error) => console.error(error));
+  };
+
   return (
-    <div className="absolute px-8 py-2 bg-gradient-to-b from-black z-20">
-      <img
-        className="w-44"
-        src="https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production_2026-05-14/consent/87b6a5c0-0104-4e96-a291-092c11350111/019ae4b5-d8fb-7693-90ba-7a61d24a8837/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-        alt="logo"
-      />
-      <button className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg">GPT Search</button>
+    <div className="absolute w-full px-8 py-2 bg-gradient-to-b from-black z-20 flex justify-between items-center">
+      <img className="w-44" src={LOGO_URL} alt="Netflix logo" />
+      {user && (
+        <div className="flex items-center gap-4">
+          <button className="py-2 px-4 bg-purple-800 text-white rounded-lg hover:bg-purple-700">
+            GPT Search
+          </button>
+          <img
+            className="w-10 h-10 rounded"
+            alt="User avatar"
+            src="https://occ-0-2232-2186.1.nflxso.net/dnm/api/v6/0RO1pLmU93-gdXvuxd_iYjzPqkc/AAAAFGFzGNrVVKUbIWxDN8LFN3A1uPUoF9U4k0C6yzfq7IEiSB1wCeWdPyUWFnV_7y_aSWMJaXqW0l_Dn2gXxuVpS2X8Q6g0H.png?r=a41"
+          />
+          <button
+            onClick={handleSignOut}
+            className="py-2 px-4 bg-red-700 text-white rounded-lg hover:bg-red-800"
+          >
+            Sign Out
+          </button>
+        </div>
+      )}
     </div>
   );
 };
