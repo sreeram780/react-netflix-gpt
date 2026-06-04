@@ -1,8 +1,7 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Browse from "./Browse";
 import Login from "./Login";
-import { Provider } from "react-redux";
-import appStore from "../utils/appStore";
+import { RouterProvider } from "react-router-dom";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -18,11 +17,8 @@ const Body = () => {
 
   return (
     <div>
-      <Provider store={appStore}>
-        <RouterProvider router={appRouter} />
-      </Provider>
+      <RouterProvider router={appRouter} />
     </div>
   );
 };
-
 export default Body;
